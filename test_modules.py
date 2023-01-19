@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from myhdl import *
-from .comb_modules import *
+from comb_modules import *
 import telemetry
 
 
