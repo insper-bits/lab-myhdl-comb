@@ -18,7 +18,7 @@ def exe1(q, a, b):
 
     @always_comb
     def comb():
-        q.next = a or not b
+        q.next = a
 
     return instances()
 
@@ -56,17 +56,17 @@ def exe3(q, a, b, c, d, e):
 
     Implemente o circuito lógico a seguir:
 
-                __
+               __
     a---------\  \
-                |  |-  __
+              |   )-  __
     b---------/__/  -|  \
-                    |   )-
+                     |   )-
     c----------------|__/  -  __
                             -|  \
-                            |   )-
+                             |   )-
     d------------------------|__/  -  __
                                     -|  \
-                                    |   )-----
+                                     |   )-----
     e--------------------------------|__/
     """
 
@@ -148,13 +148,5 @@ def bin2hex(hex0, sw):
             hex0.next = "1000000"
         else:
             hex0.next = "1000000"
-
-    return instances()
-
-@block
-def bin2bcd(b, dig1, dig0):
-    @always_comb
-    def comb():
-        dig1.next = b
 
     return instances()
