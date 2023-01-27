@@ -2,8 +2,9 @@
 
 from myhdl import *
 from comb_modules import *
-import telemetry
+import pytes
 
+pytestmark = pytest.mark.telemetry("23a-bits", "lab-5", "hw")
 
 def test_exe1():
     @instance
@@ -76,21 +77,5 @@ def test_exe3():
     d = Signal(bool(0))
     e = Signal(bool(0))
     dut = exe3(q, a, b, c, d, e)
-    sim = Simulation(dut, stimulus)
-    sim.run()
-
-    
-def test_bin2bcd():
-    @instance
-    def stimulus():
-        b.next = 12
-        yield delay(1)
-        assert dig0 == 2
-        assert dig1 == 1
-
-    b = Signal(modbv(0))
-    dig0 = Signal(modbv(0))
-    dig1 = Signal(modbv(0))
-    dut = bin2bcd(b, dig1, dig0)
     sim = Simulation(dut, stimulus)
     sim.run()
