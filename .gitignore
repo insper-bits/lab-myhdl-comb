@@ -9,6 +9,6 @@ build
 htmlcov.json
 venv/
 
-*.json
+./*.json
 *.rbf
 *.v
