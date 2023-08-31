@@ -2,9 +2,13 @@
 
 from myhdl import *
 from comb_modules import *
-import pytes
+import pytest
+import yaml
 
-pytestmark = pytest.mark.telemetry("23a-bits", "lab-5", "hw")
+from telemetry import telemetryMark
+
+pytestmark = telemetryMark()
+
 
 def test_exe1():
     @instance
