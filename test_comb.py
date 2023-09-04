@@ -5,9 +5,12 @@ from comb_modules import *
 import pytest
 import yaml
 
-from telemetry import telemetryMark
+try:
+    from telemetry import telemetryMark
 
-pytestmark = telemetryMark()
+    pytestmark = telemetryMark()
+except ImportError as err:
+    print("Telemetry não importado")
 
 
 def test_exe1():
