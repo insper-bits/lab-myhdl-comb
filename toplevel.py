@@ -5,23 +5,19 @@ from myhdl import *
 from comb_modules import *
 
 @block
-def toplevel(LEDR, SW, KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50, RESET_N):
-    sw_s = [SW(i) for i in range(10)]
-    key_s = [KEY(i) for i in range(10)]
+def toplevel(LEDR, SW, HEX0, HEX1):
+    # Aux signals
     ledr_s = [Signal(bool(0)) for i in range(10)]
 
-    # ---------------------------------------- #
-    # comb
-    # ---------------------------------------- #
+    # Instatiations
     ic1 = exe4(ledr_s, SW)
     # ic2 = exe5(ledr_s, SW)
     # ic2 = sw2hex(HEX0, SW)
     # ic3 = bin2hex(HEX1, SW)
 
-    # ---------------------------------------- #
     @always_comb
     def comb():
-        for i in range(len(ledr_s)):
+        for i in range(len(LEDR)):
             LEDR[i].next = ledr_s[i]
 
     return instances()
@@ -39,5 +35,5 @@ HEX5 = Signal(intbv(1)[7:])
 CLOCK_50 = Signal(bool())
 RESET_N = ResetSignal(0, active=0, isasync=True)
 
-top = toplevel(LEDR, SW, KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50, RESET_N)
-top.convert(hdl="VHDL")
+top = toplevel(LEDR, SW, HEX0, HEX1)
+top.convert(hdl="verilog")

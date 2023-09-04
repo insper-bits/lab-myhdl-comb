@@ -1,11 +1,13 @@
 DEVICE?=5CEBA4F23C7
 QSF=de0cv_pins.qsf
 
-%.v: %.py
+.PHONY: always
+
+%.v: %.py always
 	python3 $^
 
 %.json: %.v
-	yosys -p "synth_intel_alm -nobram -nolutram -top toplevel -nodsp; write_json $@" $^
+	yosys yosys.ys
 
 %.rbf: %.json ${QSF}
 	nextpnr-mistral --parallel-refine --device ${DEVICE} --json $< --qsf ${QSF} --router router2 --rbf $@
@@ -17,3 +19,6 @@ clean:
 	rm -f *.json *.rbf *.v
 
 .PRECIOUS: %.json %.rbf %.v
+
+
+yosys -p "setundef -zero -undriven o:* "
