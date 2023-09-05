@@ -79,6 +79,10 @@ def exe3(q, a, b, c, d, e):
 
 @block
 def exe4(led, sw):
+    """
+    led0 é sw[0] and (não sw[1])
+    """
+
     @always_comb
     def comb():
         led[0].next = sw[0] and (not sw[1])
