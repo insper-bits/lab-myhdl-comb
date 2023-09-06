@@ -6,7 +6,7 @@ QSF=de0cv_pins.qsf
 %.v: %.py always
 	python3 $^
 
-%.json: %.v
+%.json: %.v yosys.ys
 	yosys yosys.ys
 
 %.rbf: %.json ${QSF}
