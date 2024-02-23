@@ -1,5 +1,5 @@
 telemetry:
   ip: http://3.83.45.177
-  course: 23b-bits
-  exercise-id: lab-5
+  course: 24a-bits
+  exercise-id: lab-myhdl
   tags: comb
