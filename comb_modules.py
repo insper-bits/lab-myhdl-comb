@@ -109,52 +109,16 @@ def exe5(leds, sw):
 
 @block
 def sw2hex(hex_pins, sw):
+    """
+    Faz a conversão de binário para display de 7 segmentos
+    """
+
     @always_comb
     def comb():
         if sw[4:0] == 0:
             hex_pins.next = "1000000"
         elif sw[4:0] == 1:
             hex_pins.next = "1111001"
-        elif sw[4:0] == 2:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 3:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 4:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 5:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 6:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 7:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 8:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 9:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 10:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 11:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 12:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 13:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 14:
-            hex_pins.next = "1000000"
-        else:
-            hex_pins.next = "1000000"
-
-    return instances()
-
-
-@block
-def bin2hex(hex_pins, sw):
-    @always_comb
-    def comb():
-        if sw[4:0] == 0:
-            hex_pins.next = "1000000"
-        elif sw[4:0] == 1:
-            hex_pins.next = "1000000"
         elif sw[4:0] == 2:
             hex_pins.next = "1000000"
         elif sw[4:0] == 3:
