@@ -18,6 +18,7 @@ QSF=de0cv_pins.qsf
 clean:
 	rm -f *.json *.rbf *.v
 
+
 .PRECIOUS: %.json %.rbf %.v
 
 
